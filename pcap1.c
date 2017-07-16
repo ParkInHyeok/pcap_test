@@ -34,11 +34,10 @@ void callback(u_char *useless, const struct pcap_pkthdr *pkthdr, const u_char *p
 	if (ether_type == ETHERTYPE_IP)
 	{
 		iph = (struct ip *)packet;
-		printf("IP 패킷\n");
 		printf("Version		: %d\n", iph->ip_v);
 		printf("Header Len	: %d\n", iph->ip_hl);
-//		printf("Src Address	: %s\n", inet_ntoa(iph->ip_src));
-//		printf("Dst Address	: %s\n", inet_ntoa(iph->ip_dst));
+		printf("Src Address	: %s\n", inet_ntoa(iph->ip_src));
+		printf("Dst Address	: %s\n", inet_ntoa(iph->ip_dst));
 
 		if (iph->ip_p == IPPROTO_TCP)
 		{
@@ -56,7 +55,7 @@ void callback(u_char *useless, const struct pcap_pkthdr *pkthdr, const u_char *p
 	}
 	else
 	{
-		printf("NONE IP 패킷\n");
+		printf("NONE IP pcaket\n");
 	}
 	printf("\n\n");
 }
@@ -102,9 +101,16 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	net_addr.s_addr = netp;
-	net = inet_ntoa(net_addr);
-	printf("NET : %s\n", mask);
+//	net_addr.s_addr = netp;
+//	net = inet_ntoa(net_addr);
+//	printf("NET : %s\n", net);
+
+
+//	mask_addr.s_addr = maskp;
+//   	mask = inet_ntoa(mask_addr);
+//    	printf("MSK : %s\n", mask);
+//    	printf("=======================\n");
+	
 
 	pcd = pcap_open_live(dev, BUFSIZ, NONPROMISCUOUS, -1, errbuf);
 	if (pcd ==NULL)
@@ -124,6 +130,5 @@ int main(int argc, char **argv)
 		printf("setfilter errpr\n");
 		exit(1);
 	}
-
   pcap_loop(pcd, atoi(argv[1]), callback, NULL);
 }
