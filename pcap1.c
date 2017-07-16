@@ -37,8 +37,8 @@ void callback(u_char *useless, const struct pcap_pkthdr *pkthdr, const u_char *p
 		printf("IP 패킷\n");
 		printf("Version		: %d\n", iph->ip_v);
 		printf("Header Len	: %d\n", iph->ip_hl);
-		printf("Src Address	: %s\n", inet_ntoa(iph->ip_src));
-		printf("Dst Address	: %s\n", inet_ntoa(iph->ip_dst));
+//		printf("Src Address	: %s\n", inet_ntoa(iph->ip_src));
+//		printf("Dst Address	: %s\n", inet_ntoa(iph->ip_dst));
 
 		if (iph->ip_p == IPPROTO_TCP)
 		{
@@ -127,6 +127,3 @@ int main(int argc, char **argv)
 
   pcap_loop(pcd, atoi(argv[1]), callback, NULL);
 }
-	
-//	pcap_loop(pcd, atoi(argv[1]), callback, NULL);
-//}
