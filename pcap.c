@@ -39,9 +39,8 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	//addr.s_addr = netp;		
 	addr.s_addr = netp;
-	net - inet_ntoa(addr);
+	net = inet_ntoa(addr);
 
 	if(net == NULL)
 	{
