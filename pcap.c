@@ -10,7 +10,6 @@ typedef struct mac_address{
 	u_char byte6;
 }mac;
 
-
 struct ether_header{
 	u_char ether_dhost[ETHER_ADDR_LEN];
 	u_char ether_shost[ETHER_ADDR_LEN];
@@ -26,28 +25,17 @@ typedef struct ip_address{
 
 typedef struct ip_header{
 	u_char ver_ihl;
-	u_char tos;
 	u_short tlen;
-	u_short identification;
 	u_short flags_fo;
-	u_char ttl;
 	u_char proto;
-	u_short crc;
 	ip_address saddr;
 	ip_address daddr;
-	u_int op_ped;
 }ip_header;
 
 typedef struct tcp_header{
 	u_short sport;
 	u_short dport;
-	u_int seqnum;
-	u_int acknum;
-	u_char th_off;
 	u_char flags;
-	u_short win;
-	u_short crc;
-	u_short urgptr;
 }tcp_header;
 
 void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data);
