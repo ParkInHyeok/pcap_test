@@ -41,9 +41,7 @@ typedef struct tcp_header{
 	u_int acknum;
 	u_char th_off;
 	u_char flags;
-	u_short win;
 	u_short crc;
-	u_short urgptr;
 }tcp_header;
 
 void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data);
